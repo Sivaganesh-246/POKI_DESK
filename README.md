@@ -34,6 +34,29 @@ Let any AI agent — [Hermes Agent](https://github.com/NousResearch/hermes-agent
 - **🎮 Multi-game** — Supports Game Boy (Pokémon Red/Blue) via PyBoy, GBA (FireRed) via PyGBA.
 - **🤖 Agent-agnostic** — Works with any AI agent, RL framework, or custom script.
 
+## Pokédex web app
+
+This repository also includes a standalone Pokédex website powered by the public
+[PokéAPI](https://pokeapi.co/). It does not need a ROM, an API key, or the game
+server. From the repository root, run:
+
+```bash
+python -m http.server 8000 --directory pokemon_agent/pokedex
+```
+
+Then open <http://localhost:8000>. Search by Pokémon name or Pokédex number,
+browse by region, sort the catalogue, save favorites, and select a Pokémon to
+view its types, abilities, height, weight, and base stats. The site loads
+catalogue data from PokéAPI and remembers favorites in your browser.
+
+### Deploy the Pokédex to Netlify
+
+The root-level `netlify.toml` runs the dependency-free build script
+`scripts/build-netlify.js`, which prepares the site in `dist/` for publishing.
+Import this repository into Netlify and leave the base directory at the
+repository root. The build command and publish directory are configured
+automatically; do not override them in the Netlify UI.
+
 ## Quick Start
 
 ### Installation

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f3ec">
+    <meta name="description" content="Explore, search, and save your favorite Pokémon in this Pokédex powered by PokéAPI.">
+    <title>Pokédex — Every Pokémon, one place</title>
+    <link rel="preconnect" href="https://pokeapi.co">
+    <link rel="preconnect" href="https://raw.githubusercontent.com">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Pokédex home">
+        <span class="brand-mark" aria-hidden="true"><span></span></span>
+        <span>POKÉDEX<span class="brand-period">.</span></span>
+      </a>
+      <div class="topbar-note"><span class="live-dot"></span> THE COMPLETE FIELD GUIDE</div>
+      <a class="api-link" href="https://pokeapi.co/" target="_blank" rel="noreferrer">POWERED BY POKÉAPI <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> YOUR FIELD GUIDE TO THE WORLD</p>
+          <h1 id="page-title">Every Pokémon.<br><span>One place.</span></h1>
+          <p class="hero-description">Search the Pokédex, meet the details, and keep a little list of your favorites.</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="hero-ball"><span></span></div>
+          <span class="hero-spark spark-one">✳</span>
+          <span class="hero-spark spark-two">✳</span>
+          <span class="hero-number">№ 001<br>— ∞</span>
+        </div>
+        <div class="hero-stats" aria-label="Pokédex statistics">
+          <div><strong id="total-count">—</strong><span>SPECIES</span></div>
+          <div><strong id="visible-count">—</strong><span>ON THIS PAGE</span></div>
+          <div><strong id="favorite-count">0</strong><span>YOUR FAVORITES</span></div>
+        </div>
+      </section>
+
+      <section class="catalogue" aria-label="Pokémon catalogue">
+        <div class="catalogue-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> THE COLLECTION</p>
+            <h2>Find your Pokémon<span class="heading-period">.</span></h2>
+          </div>
+          <label class="sort-control" for="sort-select">
+            <span>SORT BY</span>
+            <select id="sort-select">
+              <option value="id">Pokédex number</option>
+              <option value="name">Name, A–Z</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="toolbar">
+          <label class="search-box" for="search-input">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 4 4"></path></svg>
+            <input id="search-input" type="search" placeholder="Search by name or Pokédex number…" autocomplete="off" aria-label="Search Pokémon">
+            <kbd>/</kbd>
+          </label>
+          <label class="filter-control" for="generation-select">
+            <span>REGION</span>
+            <select id="generation-select">
+              <option value="all">All regions</option>
+              <option value="1">Kanto · 001–151</option>
+              <option value="2">Johto · 152–251</option>
+              <option value="3">Hoenn · 252–386</option>
+              <option value="4">Sinnoh · 387–493</option>
+              <option value="5">Unova · 494–649</option>
+              <option value="6">Kalos · 650–721</option>
+              <option value="7">Alola · 722–809</option>
+              <option value="8">Galar · 810–905</option>
+              <option value="9">Paldea · 906–1025</option>
+            </select>
+          </label>
+          <button id="favorites-toggle" class="favorites-toggle" type="button" aria-pressed="false">
+            <span aria-hidden="true">♡</span> FAVORITES <span id="favorites-button-count" class="button-count">0</span>
+          </button>
+        </div>
+
+        <div class="results-line">
+          <p id="results-label" aria-live="polite">Connecting to the Pokédex…</p>
+          <p class="results-hint">SELECT A CARD TO EXPLORE <span aria-hidden="true">↘</span></p>
+        </div>
+
+        <div id="status-panel" class="status-panel" role="status">
+          <span class="loader" aria-hidden="true"></span>
+          <span>Finding Pokémon…</span>
+        </div>
+        <div id="pokemon-grid" class="pokemon-grid" aria-live="polite"></div>
+        <div id="empty-state" class="empty-state" hidden>
+          <span aria-hidden="true">◌</span>
+          <h3>No Pokémon found</h3>
+          <p>Try another name, number, or region.</p>
+        </div>
+        <div class="pagination">
+          <button id="load-more" class="load-more" type="button" hidden>LOAD MORE <span aria-hidden="true">↓</span></button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a class="brand footer-brand" href="#"><span class="brand-mark" aria-hidden="true"><span></span></span><span>POKÉDEX<span class="brand-period">.</span></span></a>
+      <p>A fan-made field guide. Pokémon data provided by <a href="https://pokeapi.co/" target="_blank" rel="noreferrer">PokéAPI</a>.</p>
+      <span>MADE FOR THE LOVE OF DISCOVERY</span>
+    </footer>
+
+    <dialog id="pokemon-dialog" class="pokemon-dialog" aria-labelledby="dialog-name">
+      <button id="dialog-close" class="dialog-close" type="button" aria-label="Close Pokémon details">×</button>
+      <div id="dialog-content"></div>
+    </dialog>
+  </body>
+</html>
