@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: pokemon-pokedex
+    env: static
+    buildCommand: node scripts/build-static-site.js
+    staticPublishPath: ./dist

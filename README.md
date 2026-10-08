@@ -49,13 +49,13 @@ browse by region, sort the catalogue, save favorites, and select a Pokémon to
 view its types, abilities, height, weight, and base stats. The site loads
 catalogue data from PokéAPI and remembers favorites in your browser.
 
-### Deploy the Pokédex to Netlify
+### Deploy the Pokédex to Render
 
-The root-level `netlify.toml` runs the dependency-free build script
-`scripts/build-netlify.js`, which prepares the site in `dist/` for publishing.
-Import this repository into Netlify and leave the base directory at the
-repository root. The build command and publish directory are configured
-automatically; do not override them in the Netlify UI.
+The root-level `render.yaml` configures a Render Static Site using the
+dependency-free build script `scripts/build-static-site.js`. Connect this
+repository in Render and deploy the blueprint. Keep the root directory empty
+(the repository root); no environment variables or start command are required.
+Render publishes the generated `dist/` directory.
 
 ## Quick Start
 

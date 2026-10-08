@@ -20,4 +20,4 @@ for (const file of siteFiles) {
   fs.copyFileSync(path.join(sourceDirectory, file), path.join(outputDirectory, file));
 }
 
-console.log(`Prepared Netlify static site in ${outputDirectory}`);
+console.log(`Prepared static site in ${outputDirectory}`);
